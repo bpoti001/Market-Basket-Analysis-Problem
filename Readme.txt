@@ -1,0 +1,2 @@
+In this project I tried to find frequent item sets from a given basket models. This project was mainly about changing A-Priori algorithm to salable model and so reducing the computation bottle neck.
+To achieve this I combined SON algorithm with A-Priori and formed a salable computation. This has been implemented on Hadoop Map-Reduce and SPARK framework
