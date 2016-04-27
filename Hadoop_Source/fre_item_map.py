@@ -45,28 +45,31 @@ def aprioriGen(freq_sets, k):
 			if L1 == L2:
 				retList.append(freq_sets[i] | freq_sets[j])
 	return retList
+data=[]
+
+for line_in in sys.stdin:
+        sub=[]
+        line = line_in.strip()
+	items = line.split(" ")
+	for item in items:
+		sub.append(item)
+        data.append(sub)
+
+c1 = createC1(data)
+dataset = map(set,data)
+f,s = scanD(dataset,c1,6)
+dual_1 = aprioriGen(f,2)
+L2,s = scanD(dataset,dual_1,6)
 a=[]
-#data = open("/root/market.txt")
-for i in sys.stdin:
-	i = i.strip()
-	items = i.split()
-	a.append(items)
-c1 = createC1(a)
-d = map(set,a)
-K=2
-ps = 0.3
-for i in range(K):
-	L1,sp = scanD(d,c1,ps)
-	c1 = aprioriGen(L1,i+1)
-out=[]
-for i in L1:
-	x,y = i
-	x = int(x)
-	y = int(y)
-	print "%d %d" %(x,y)
-#	print z
-#	out.append(z)
-#for i in out:
-#		print i
+for i in dataset:
+	for j in L2:
+		if j.issubset(i):
+			if j not in a:
+				a.append(j)
+
+for item in a:
+    elem1, elem2 = item
+    print( "%s,%s " % (elem1, elem2) )
+
 
 
