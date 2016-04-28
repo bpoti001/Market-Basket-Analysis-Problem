@@ -1,8 +1,11 @@
 #!/usr/bin/env python
+
 import sys
-pre_pair = None
-for pair in sys.stdin:
-	if pair!=pre_pair:
-		print pair
-		pre_pair= pair
-		
+
+data=[]
+
+for line_in in sys.stdin:
+    line = line_in.strip()
+    if line not in data:
+        data.append(line)
+        print(line)
