@@ -1,11 +1,7 @@
 #!/usr/bin/env python
-
 import sys
-
-data=[]
-
-for line_in in sys.stdin:
-    line = line_in.strip()
-    if line not in data:
-        data.append(line)
-        print(line)
+last_key = None
+for this_key in sys.stdin:
+    if this_key!=last_key:
+    	print this_key
+    last_key = this_key
